@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d18">
+  <title>Shared Watch</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header><div class="logo">SW</div><div><h1>Shared Watch</h1><p>Watch together, wherever you are.</p></div><span id="connection" class="status">Connecting</span></header>
+
+    <section id="home" class="panel">
+      <h2>Start watching together</h2>
+      <p class="muted">Create a room for your friends or join with a room code.</p>
+      <label for="displayName">Your name</label>
+      <input id="displayName" maxlength="20" placeholder="Enter your name">
+      <div class="actions">
+        <button id="createBtn" class="primary">Create Room</button>
+      </div>
+      <div class="divider"><span>OR</span></div>
+      <label for="roomCode">Room code</label>
+      <input id="roomCode" inputmode="numeric" maxlength="6" placeholder="6-digit code">
+      <button id="joinBtn" class="secondary">Join Room</button>
+      <p id="homeError" class="error"></p>
+    </section>
+
+    <section id="room" class="hidden">
+      <div class="roombar panel">
+        <div><span class="muted small">ROOM CODE</span><strong id="roomCodeLabel">------</strong></div>
+        <button id="copyBtn" class="smallbtn">Copy code</button>
+        <span id="memberCount" class="muted">1 watching</span>
+      </div>
+      <section class="panel playerPanel">
+        <div class="playerHead"><div><h2>Now playing</h2><p id="roleLabel" class="muted">Host room</p></div><span class="live">● LIVE ROOM</span></div>
+        <div id="playerWrap" class="playerWrap">
+          <div id="player"></div>
+          <div id="emptyPlayer" class="emptyPlayer"><div class="playIcon">▶</div><strong>No video selected</strong><span>The host can add a YouTube link below.</span></div>
+        </div>
+        <div id="hostTools" class="hostTools">
+          <label for="youtubeUrl">YouTube video link</label>
+          <div class="urlrow"><input id="youtubeUrl" placeholder="Paste a YouTube URL"><button id="loadVideoBtn" class="primary">Load</button></div>
+          <p class="hint">Only the host can change the video and control playback.</p>
+        </div>
+        <div id="viewerNote" class="hint hidden">The host controls this video. You can watch and follow along.</div>
+        <p id="roomError" class="error"></p>
+      </section>
+      <button id="leaveBtn" class="leave">Leave Room</button>
+    </section>
+    <footer>Shared Watch · Mobile friendly</footer>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
